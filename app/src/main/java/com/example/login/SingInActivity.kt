@@ -3,6 +3,8 @@ package com.example.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager.OnActivityStopListener
+import android.widget.SearchView.OnCloseListener
 import android.widget.Toast
 import com.example.login.databinding.ActivitySingInBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -43,5 +45,10 @@ class SingInActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
+
+    override fun onStop() {
+        super.onStop()
+        firebaseAuth.signOut()
     }
 }
